@@ -1,6 +1,6 @@
 const express = require("express");
 const router=express.Router();
-const {CreateToken, callBac, callBack,stkPush}= require('../controllers/Token')
+const {CreateToken, callBack,stkPush}= require('../controllers/Token.js')
 router.post("/",CreateToken,stkPush)
 
 router.post('/callback',callBack)
