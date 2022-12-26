@@ -69,13 +69,14 @@ const stkPush=async(req,res)=>{
   .post(Url,Data,{      
     headers: {
       authorization: `Bearer ${token}`,
+      "Content-Type" : "application/json"
     },
   }).then((response) => {
     console.log(response.data);
     res.status(200).json(response.data);
   }) .catch((err) => {
-    console.log(err);
-    res.status(400).json(err.message);
+    console.log(err.response.data);
+    res.status(400).json(err.response.data);
   });
 }
 const callBack=async(req,res)=>{
