@@ -11,6 +11,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/stk',Payee)
+app.get('/test',(req,res)=>{
+  res.send(`its working`)
+})
 const Port =  process.env.PORT;
 
 

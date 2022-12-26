@@ -51,17 +51,17 @@ const stkPush=async(req,res)=>{
       "base64"
     );// THE PASSWORD IS A COMBINATION OF THIS 3 THINGS I.E BASE64 STRING
   //stk bodyy
- 
+ const fakePassword=`MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTYwMjE2MTY`
   const Data={
     BusinessShortCode: shortCode,// ACTUAL PAYBILL
-    Password:password,//COMBINING SHORTCODE,PASSKEY AND TIMESATAMP
+    Password:fakePassword,//COMBINING SHORTCODE,PASSKEY AND TIMESATAMP
     Timestamp: timeStamp,//time stamp  IN THE FORM OF YYYYMMDDHHmmss
     TransactionType: "CustomerPayBillOnline", //" OR CustomerBuyGoodsOnline"
     Amount: amount,
     PartyA: `254${phone}`,//USERS PHONE NUMBER
     PartyB: shortCode,// OUR PAY BILL
     PhoneNumber: `254${phone}`,//USERS PHONE NUMBER
-    CallBackURL: "https://fdda-154-122-161-9.eu.ngrok.io/stk/callback",
+    CallBackURL: "https://motapay.onrender.com/callback",
     AccountReference: `Mota Automobiles`,
     TransactionDesc: "mota platform subscription",
   }
