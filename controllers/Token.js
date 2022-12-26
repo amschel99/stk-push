@@ -1,6 +1,7 @@
 const  axios =require("axios") ;
 require("dotenv").config();
 const PaymentModule = require('../models/PaymentModel')
+let userMessage;
 const CreateToken=async(req,res,next)=>{
       //getting the  auth ..by encoding both consumer key and consumerSecret
   
@@ -50,6 +51,7 @@ const stkPush=async(req,res)=>{
       "base64"
     );// THE PASSWORD IS A COMBINATION OF THIS 3 THINGS I.E BASE64 STRING
   //stk bodyy
+ 
   const Data={
     BusinessShortCode: shortCode,// ACTUAL PAYBILL
     Password:password,//COMBINING SHORTCODE,PASSKEY AND TIMESATAMP
@@ -85,15 +87,19 @@ const callBack=async(req,res)=>{
     if(! callbackData.Body.stkCallback.CallbackMetadata){
       //if something happened like a user cancelled the process, this code will run
         console.log( callbackData.Body.stkCallback.ResultDesc);
-       return  res.json( callbackData.Body.stkCallback.ResultDesc )
+        userMessage=callbackData.Body.stkCallback.ResultDesc
+      
     }
     const phone= callbackData.Body.stkCallback.CallbackMetadata.Item[4].Value
     const amount= callbackData.Body.stkCallback.CallbackMetadata.Item[0].Value
     const trnx_id= callbackData.Body.stkCallback.CallbackMetadata.Item[1].Value
-console.log({phone,amount,trnx_id});// we get this from mpesa itself and we save it to the database
+console.log({phone,amount,trnx_id});
+
+// we get this from mpesa itself and we save it to the database
 try{
  const transaction =await PaymentModule.create({PhoneNumber:phone,amount:amount,trnx_id:trnx_id})
- return res.json(transaction)
+ console.log(transaction)
+ //return res.json(transaction) we do not need to send saf anything
 }
 catch(error){
   console.log(error)
@@ -104,5 +110,15 @@ return;
 
 
 }
+const sendTransactionDetails= async (req,res)=>{
+try{
+const transaction= await PaymentModule.findOne({PhoneNumber:req.body.phone,trnx_id:req.body.id,amount:req.body.amount})
+res.json(transaction)
+}
+catch(e){
+console.log(e)
+return;
+}
+}
 
-module.exports={CreateToken ,stkPush,callBack}
+module.exports={CreateToken ,stkPush,callBack,sendTransactionDetails}
