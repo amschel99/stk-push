@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const mongoose = require('mongoose');
 
+//remember to include the correct passkey and paybill in production enviroment
 const Payee= require("./routes/Routes");
 require("dotenv").config();
 
