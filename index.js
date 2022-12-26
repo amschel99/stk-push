@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/stk',Payee)
-const Port = 5000;
+const Port =  process.env.PORT;
 
 
 
