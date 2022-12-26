@@ -16,14 +16,14 @@ const Port = 5000;
 
 
 mongoose.connect(process.env.MONGO_URL).then(()=>{
-    console.log('connected to Db succefull');
+  app.listen(Port, () => {
+  console.log(`app is listening on port :${Port}`);
+}); 
 }).catch((err)=>{
     console.error(err.message);
 })
 
 
-app.listen(Port, () => {
-  console.log(`app is listening on port :${Port}`);
-});
+
 
 
