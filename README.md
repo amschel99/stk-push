@@ -18,7 +18,8 @@
 ####  your request body should have 
 
  
-``` "phone":"0790569556",
+``` 
+"phone":"0790569556",
 "amount":"1"
 ```
 
