@@ -15,8 +15,14 @@
 
 #### save you files and run your server by ```npm start```
 #### Using a http client like postman, make a POST request to ```http://localhost:3000/stk```, i.e if your PORT is 3000.
-#### include ```"amount":"1",
-"phone:"0790569556" ``` in req.body
+#### include ``` 
+
+"amount":"1",
+
+"phone:"0790569556"  ``` 
+
+in req.body.
+#### You will get an stk push prompt to enter your pin.
 
 
 
