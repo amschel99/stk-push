@@ -11,6 +11,8 @@
 
 #### a quick hack in linux systems is ``` touch .env ```
 
+#### Place your ```MPESA_CONSUMER_SECRET```,
+
 
 
 
