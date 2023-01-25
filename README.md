@@ -15,10 +15,12 @@
 
 #### save you files and run your server by ```npm start```
 #### Using a http client like postman, make a POST request to ```http://localhost:3000/stk```, i.e if your PORT is 3000.
-####  your request body should have ``` {
-"phone":"0790569556",
+####  your request body should have 
+
+ 
+``` "phone":"0790569556",
 "amount":"1"
-} ```
+```
 
 
 
