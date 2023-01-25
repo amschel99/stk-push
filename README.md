@@ -7,5 +7,10 @@
 
 ```npm install```
 
+#### create a .env file to place your enviromental variables.
+
+#### a quick hack in linux systems is ``` touch .env ```
+
+
 
 
